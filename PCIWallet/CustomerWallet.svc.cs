@@ -17,7 +17,8 @@ namespace PCIWallet
 
             try
             {
-                dbPCITokenEntities1 context = new dbPCITokenEntities1();
+                
+                dbPCITokenSVCEntities  context = new dbPCITokenSVCEntities ();
                 var wallet = context.uspGetWallet(AccountId);
                 var wallets = from e in wallet
                               select new WalletInfo
@@ -42,7 +43,7 @@ namespace PCIWallet
             List<PaymentHistory> lstPAyments = null;
             try
             {
-                dbPCITokenEntities1 context = new dbPCITokenEntities1();
+                dbPCITokenSVCEntities  context = new dbPCITokenSVCEntities ();
                 var payment = context.PymtHistory(AccountId);
                 var payments = from p in payment
                                select new PaymentHistory
@@ -50,8 +51,8 @@ namespace PCIWallet
                                    Accountid = p.Accountid,
                                    PaymentAmount = p.PaymentAmount.ToString(),
                                    PaymentDate = p.PaymentDate,
-                                   isVoid = p.Void,
-                                   isReversal = p.Reversal,
+                                   isVoid = p.Void =="Y" ? true : false,
+                                   isReversal = p.Reversal =="Y" ? true: false,
                                    TransactionStatus = p.TransactionStatus,
                                    TransactionNumber = p.TransactionNumber
                                };
@@ -69,7 +70,7 @@ namespace PCIWallet
             string ReturnValue = string.Empty;
             try
             {
-                dbPCITokenEntities1 context = new dbPCITokenEntities1();
+                dbPCITokenSVCEntities  context = new dbPCITokenSVCEntities ();
                 int val = context.StopPayment(AccountId, TransactionNumber);
                 if (val > 0)
                     ReturnValue = "OK";
@@ -89,7 +90,7 @@ namespace PCIWallet
             string ReturnValue = string.Empty;
             try
             {
-                dbPCITokenEntities1 context = new dbPCITokenEntities1();
+                dbPCITokenSVCEntities  context = new dbPCITokenSVCEntities ();
                 int val = context.ReversePayment(AccountId, TransactionNumber);
                 if (val > 0)
                     ReturnValue = "OK";
@@ -109,7 +110,7 @@ namespace PCIWallet
             string ReturnValue = string.Empty;
             try
             {
-                dbPCITokenEntities1 context = new dbPCITokenEntities1();
+                dbPCITokenSVCEntities  context = new dbPCITokenSVCEntities ();
                 int val = context.insertpayment(objPayment.Accountid, Convert.ToDecimal(objPayment.PaymentAmount), objPayment.BankAccountNumber, objPayment.RoutingNumber, objPayment.CreditCard);
                 if (val > 0)
                     ReturnValue = "OK";

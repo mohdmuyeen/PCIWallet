@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbPCITokenSVCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tPaymentTransaction">
+          <Key>
+            <PropertyRef Name="IID" />
+          </Key>
+          <Property Name="IID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TransactionNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TokenID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PaymentDate" Type="datetime" Nullable="false" />
+          <Property Name="PaymentAmount" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TransactionType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TransactionStatus" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tPCIToken">
+          <Key>
+            <PropertyRef Name="IID" />
+          </Key>
+          <Property Name="IID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TokenID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreditCardNumber" Type="varchar" MaxLength="50" />
+          <Property Name="BankAccountNumber" Type="varchar" MaxLength="50" />
+          <Property Name="RoutingNumber" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tStgPayments">
+          <Key>
+            <PropertyRef Name="IID" />
+          </Key>
+          <Property Name="IID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TransactionNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TokenID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PaymentDate" Type="datetime" Nullable="false" />
+          <Property Name="PaymentAmount" Type="numeric" Precision="18" Scale="2" />
+        </EntityType>
+        <Function Name="insertpayment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PACCOUNTID" Type="varchar" Mode="In" />
+          <Parameter Name="PPAYMENTAMOUNT" Type="numeric" Mode="In" />
+          <Parameter Name="PBANKACCOUNTNUMBER" Type="varchar" Mode="In" />
+          <Parameter Name="PROUTINGNUMBER" Type="varchar" Mode="In" />
+          <Parameter Name="PCREDITCARDNUMBER" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PAYMENTHISTORY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PACCOUNTID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PymtHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PACCOUNTID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ReversePayment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PACCOUNTID" Type="varchar" Mode="In" />
+          <Parameter Name="PTRANSACTIONNUMBER" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="StopPayment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PACCOUNTID" Type="varchar" Mode="In" />
+          <Parameter Name="PTRANSACTIONNUMBER" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="uspGetWallet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pAccountId" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="VOIDPAYMENT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PACCOUNTID" Type="varchar" Mode="In" />
+          <Parameter Name="PTRANSACTIONNUMBER" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="dbPCITokenSVCModelStoreContainer">
+          <EntitySet Name="tPaymentTransaction" EntityType="Self.tPaymentTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tPCIToken" EntityType="Self.tPCIToken" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tStgPayments" EntityType="Self.tStgPayments" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbPCITokenSVCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tPaymentTransaction">
+          <Key>
+            <PropertyRef Name="IID" />
+          </Key>
+          <Property Name="IID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TransactionNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TokenID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PaymentAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TransactionType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TransactionStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tPCIToken">
+          <Key>
+            <PropertyRef Name="IID" />
+          </Key>
+          <Property Name="IID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TokenID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreditCardNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BankAccountNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoutingNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tStgPayment">
+          <Key>
+            <PropertyRef Name="IID" />
+          </Key>
+          <Property Name="IID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TransactionNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TokenID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PaymentAmount" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityContainer Name="dbPCITokenSVCEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tPaymentTransactions" EntityType="Self.tPaymentTransaction" />
+          <EntitySet Name="tPCITokens" EntityType="Self.tPCIToken" />
+          <EntitySet Name="tStgPayments" EntityType="Self.tStgPayment" />
+          <FunctionImport Name="insertpayment">
+            <Parameter Name="PACCOUNTID" Mode="In" Type="String" />
+            <Parameter Name="PPAYMENTAMOUNT" Mode="In" Type="Decimal" />
+            <Parameter Name="PBANKACCOUNTNUMBER" Mode="In" Type="String" />
+            <Parameter Name="PROUTINGNUMBER" Mode="In" Type="String" />
+            <Parameter Name="PCREDITCARDNUMBER" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PAYMENTHISTORY" ReturnType="Collection(dbPCITokenSVCModel.PAYMENTHISTORY_Result)">
+            <Parameter Name="PACCOUNTID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PymtHistory" ReturnType="Collection(dbPCITokenSVCModel.PymtHistory_Result)">
+            <Parameter Name="PACCOUNTID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ReversePayment">
+            <Parameter Name="PACCOUNTID" Mode="In" Type="String" />
+            <Parameter Name="PTRANSACTIONNUMBER" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="StopPayment">
+            <Parameter Name="PACCOUNTID" Mode="In" Type="String" />
+            <Parameter Name="PTRANSACTIONNUMBER" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspGetWallet" ReturnType="Collection(dbPCITokenSVCModel.uspGetWallet_Result)">
+            <Parameter Name="pAccountId" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="VOIDPAYMENT">
+            <Parameter Name="PACCOUNTID" Mode="In" Type="String" />
+            <Parameter Name="PTRANSACTIONNUMBER" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="PAYMENTHISTORY_Result">
+          <Property Type="String" Name="Accountid" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PaymentDate" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="PaymentAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="Void" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Reversal" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="TransactionStatus" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="TransactionNumber" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="PymtHistory_Result">
+          <Property Type="String" Name="Accountid" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PaymentDate" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="PaymentAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="Void" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Reversal" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="TransactionStatus" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="TransactionNumber" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="uspGetWallet_Result">
+          <Property Type="String" Name="AccountNumber" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="BankLastFour" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="RoutingNumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TokenID" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DisplayName" Nullable="false" MaxLength="6" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbPCITokenSVCModelStoreContainer" CdmEntityContainer="dbPCITokenSVCEntities">
+          <EntitySetMapping Name="tPaymentTransactions">
+            <EntityTypeMapping TypeName="dbPCITokenSVCModel.tPaymentTransaction">
+              <MappingFragment StoreEntitySet="tPaymentTransaction">
+                <ScalarProperty Name="IID" ColumnName="IID" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="TransactionNumber" ColumnName="TransactionNumber" />
+                <ScalarProperty Name="TokenID" ColumnName="TokenID" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
+                <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
+                <ScalarProperty Name="TransactionStatus" ColumnName="TransactionStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tPCITokens">
+            <EntityTypeMapping TypeName="dbPCITokenSVCModel.tPCIToken">
+              <MappingFragment StoreEntitySet="tPCIToken">
+                <ScalarProperty Name="IID" ColumnName="IID" />
+                <ScalarProperty Name="TokenID" ColumnName="TokenID" />
+                <ScalarProperty Name="CreditCardNumber" ColumnName="CreditCardNumber" />
+                <ScalarProperty Name="BankAccountNumber" ColumnName="BankAccountNumber" />
+                <ScalarProperty Name="RoutingNumber" ColumnName="RoutingNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tStgPayments">
+            <EntityTypeMapping TypeName="dbPCITokenSVCModel.tStgPayment">
+              <MappingFragment StoreEntitySet="tStgPayments">
+                <ScalarProperty Name="IID" ColumnName="IID" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="TransactionNumber" ColumnName="TransactionNumber" />
+                <ScalarProperty Name="TokenID" ColumnName="TokenID" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="insertpayment" FunctionName="dbPCITokenSVCModel.Store.insertpayment" />
+          <FunctionImportMapping FunctionImportName="PAYMENTHISTORY" FunctionName="dbPCITokenSVCModel.Store.PAYMENTHISTORY">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbPCITokenSVCModel.PAYMENTHISTORY_Result">
+                <ScalarProperty Name="Accountid" ColumnName="Accountid" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
+                <ScalarProperty Name="Void" ColumnName="Void" />
+                <ScalarProperty Name="Reversal" ColumnName="Reversal" />
+                <ScalarProperty Name="TransactionStatus" ColumnName="TransactionStatus" />
+                <ScalarProperty Name="TransactionNumber" ColumnName="TransactionNumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PymtHistory" FunctionName="dbPCITokenSVCModel.Store.PymtHistory">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbPCITokenSVCModel.PymtHistory_Result">
+                <ScalarProperty Name="Accountid" ColumnName="Accountid" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
+                <ScalarProperty Name="Void" ColumnName="Void" />
+                <ScalarProperty Name="Reversal" ColumnName="Reversal" />
+                <ScalarProperty Name="TransactionStatus" ColumnName="TransactionStatus" />
+                <ScalarProperty Name="TransactionNumber" ColumnName="TransactionNumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ReversePayment" FunctionName="dbPCITokenSVCModel.Store.ReversePayment" />
+          <FunctionImportMapping FunctionImportName="StopPayment" FunctionName="dbPCITokenSVCModel.Store.StopPayment" />
+          <FunctionImportMapping FunctionImportName="uspGetWallet" FunctionName="dbPCITokenSVCModel.Store.uspGetWallet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbPCITokenSVCModel.uspGetWallet_Result">
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="BankLastFour" ColumnName="BankLastFour" />
+                <ScalarProperty Name="RoutingNumber" ColumnName="RoutingNumber" />
+                <ScalarProperty Name="TokenID" ColumnName="TokenID" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="VOIDPAYMENT" FunctionName="dbPCITokenSVCModel.Store.VOIDPAYMENT" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4d5886c1-c957-42d5-857f-5aa6c097d4d8" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:49352/CustomerWallet.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CustomerWallet.xsd" MetadataType="Schema" ID="a83c6213-5b3b-4b65-a9ff-f3a1487b58cb" SourceId="1" SourceUrl="http://localhost:49352/CustomerWallet.svc?xsd=xsd2" />
+    <MetadataFile FileName="CustomerWallet1.xsd" MetadataType="Schema" ID="89ed0012-bda2-468f-997e-2f0043ca164b" SourceId="1" SourceUrl="http://localhost:49352/CustomerWallet.svc?xsd=xsd1" />
+    <MetadataFile FileName="CustomerWallet.disco" MetadataType="Disco" ID="815bed2a-e692-482a-8ebd-9e310af2dfe8" SourceId="1" SourceUrl="http://localhost:49352/CustomerWallet.svc?disco" />
+    <MetadataFile FileName="CustomerWallet2.xsd" MetadataType="Schema" ID="7c652ccf-7db4-451a-b359-7e1e21196986" SourceId="1" SourceUrl="http://localhost:49352/CustomerWallet.svc?xsd=xsd0" />
+    <MetadataFile FileName="CustomerWallet.wsdl" MetadataType="Wsdl" ID="9722bc96-3ffb-4d29-87cd-4eb6d115c861" SourceId="1" SourceUrl="http://localhost:49352/CustomerWallet.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PCIWallet" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PCIWallet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfWalletInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WalletInfo" nillable="true" type="tns:WalletInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWalletInfo" nillable="true" type="tns:ArrayOfWalletInfo" />
+  <xs:complexType name="WalletInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaymentAccountLastFour" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoutingNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ToketID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WalletInfo" nillable="true" type="tns:WalletInfo" />
+  <xs:complexType name="ArrayOfPaymentHistory">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PaymentHistory" nillable="true" type="tns:PaymentHistory" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPaymentHistory" nillable="true" type="tns:ArrayOfPaymentHistory" />
+  <xs:complexType name="PaymentHistory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Accountid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaymentAmount" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaymentDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TransactionNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TransactionStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="isReversal" type="xs:boolean" />
+      <xs:element minOccurs="0" name="isVoid" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PaymentHistory" nillable="true" type="tns:PaymentHistory" />
+  <xs:complexType name="Payment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Accountid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BankAccountNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreditCard" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaymentAmount" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoutingNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TokenID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Payment" nillable="true" type="tns:Payment" />
+</xs:schema>

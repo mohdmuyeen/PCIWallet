@@ -53,9 +53,9 @@ namespace PCIWallet
         [DataMember]
         public String PaymentAmount { get; set; }
         [DataMember]
-        public String isVoid { get; set; }
+        public Boolean isVoid { get; set; }
         [DataMember]
-        public String isReversal { get; set; }
+        public Boolean isReversal { get; set; }
         [DataMember]
         public String TransactionStatus { get; set; }
         [DataMember]
@@ -74,5 +74,7 @@ namespace PCIWallet
         public String BankAccountNumber { get; set; }
         [DataMember]
         public String RoutingNumber { get; set; }
+        [DataMember]
+        public String TokenID { get; set; }
     }
 }
