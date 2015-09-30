@@ -7,7 +7,7 @@
       <Diagram DiagramId="086a178a49a84d59bdd4123f463fe412" Name="Diagram1">
         <EntityTypeShape EntityType="dbPCITokenModel.tPaymentTransaction" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbPCITokenModel.tPCIToken" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbPCITokenModel.tStgPayment" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbPCITokenModel.tStgPayment" Width="1.5" PointX="2.75" PointY="3" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -40,5 +40,61 @@ namespace PCIWallet
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetWallet_Result>("uspGetWallet", pAccountIdParameter);
         }
+    
+        public virtual int insertpayment(string pACCOUNTID, Nullable<decimal> pPAYMENTAMOUNT, string pBANKACCOUNTNUMBER, string pROUTINGNUMBER, string pCREDITCARDNUMBER)
+        {
+            var pACCOUNTIDParameter = pACCOUNTID != null ?
+                new ObjectParameter("PACCOUNTID", pACCOUNTID) :
+                new ObjectParameter("PACCOUNTID", typeof(string));
+    
+            var pPAYMENTAMOUNTParameter = pPAYMENTAMOUNT.HasValue ?
+                new ObjectParameter("PPAYMENTAMOUNT", pPAYMENTAMOUNT) :
+                new ObjectParameter("PPAYMENTAMOUNT", typeof(decimal));
+    
+            var pBANKACCOUNTNUMBERParameter = pBANKACCOUNTNUMBER != null ?
+                new ObjectParameter("PBANKACCOUNTNUMBER", pBANKACCOUNTNUMBER) :
+                new ObjectParameter("PBANKACCOUNTNUMBER", typeof(string));
+    
+            var pROUTINGNUMBERParameter = pROUTINGNUMBER != null ?
+                new ObjectParameter("PROUTINGNUMBER", pROUTINGNUMBER) :
+                new ObjectParameter("PROUTINGNUMBER", typeof(string));
+    
+            var pCREDITCARDNUMBERParameter = pCREDITCARDNUMBER != null ?
+                new ObjectParameter("PCREDITCARDNUMBER", pCREDITCARDNUMBER) :
+                new ObjectParameter("PCREDITCARDNUMBER", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("insertpayment", pACCOUNTIDParameter, pPAYMENTAMOUNTParameter, pBANKACCOUNTNUMBERParameter, pROUTINGNUMBERParameter, pCREDITCARDNUMBERParameter);
+        }
+    
+        public virtual ObjectResult<PAYMENTHISTORY_Result> PAYMENTHISTORY(string pACCOUNTID)
+        {
+            var pACCOUNTIDParameter = pACCOUNTID != null ?
+                new ObjectParameter("PACCOUNTID", pACCOUNTID) :
+                new ObjectParameter("PACCOUNTID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PAYMENTHISTORY_Result>("PAYMENTHISTORY", pACCOUNTIDParameter);
+        }
+    
+        public virtual ObjectResult<PymtHistory_Result> PymtHistory(string pACCOUNTID)
+        {
+            var pACCOUNTIDParameter = pACCOUNTID != null ?
+                new ObjectParameter("PACCOUNTID", pACCOUNTID) :
+                new ObjectParameter("PACCOUNTID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PymtHistory_Result>("PymtHistory", pACCOUNTIDParameter);
+        }
+    
+        public virtual int VOIDPAYMENT(string pACCOUNTID, string pTRANSACTIONNUMBER)
+        {
+            var pACCOUNTIDParameter = pACCOUNTID != null ?
+                new ObjectParameter("PACCOUNTID", pACCOUNTID) :
+                new ObjectParameter("PACCOUNTID", typeof(string));
+    
+            var pTRANSACTIONNUMBERParameter = pTRANSACTIONNUMBER != null ?
+                new ObjectParameter("PTRANSACTIONNUMBER", pTRANSACTIONNUMBER) :
+                new ObjectParameter("PTRANSACTIONNUMBER", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("VOIDPAYMENT", pACCOUNTIDParameter, pTRANSACTIONNUMBERParameter);
+        }
     }
 }

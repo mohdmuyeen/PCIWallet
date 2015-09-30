@@ -13,6 +13,10 @@ namespace PCIWallet
     {
         [OperationContract]
         List<WalletInfo> RetrieveWallet(String AccountId);
+
+        [OperationContract]
+        List<PaymentHistory> PaymentHistory(String AccountId);
+
     }
     [DataContract]
     public class WalletInfo
@@ -27,5 +31,37 @@ namespace PCIWallet
         public String ToketID { get; set; }
         [DataMember]
         public String DisplayName { get; set; }
+    }
+    [DataContract]
+    public class PaymentHistory
+    {
+        [DataMember]
+        public String Accountid { get; set; }
+        [DataMember]
+        public String PaymentDate { get; set; }
+        [DataMember]
+        public String PaymentAmount { get; set; }
+        [DataMember]
+        public String isVoid { get; set; }
+        [DataMember]
+        public String isReversal { get; set; }
+        [DataMember]
+        public String TransactionStatus { get; set; }
+        [DataMember]
+        public String TransactionNumber { get; set; }
+    }
+    [DataContract]
+    public class Payment
+    {
+        [DataMember]
+        public String Accountid { get; set; }
+        [DataMember]
+        public String PaymentDate { get; set; }
+        [DataMember]
+        public String PaymentAmount { get; set; }
+        [DataMember]
+        public String TransactionNumber { get; set; }
+        [DataMember]
+        public String TokenID { get; set; }
     }
 }

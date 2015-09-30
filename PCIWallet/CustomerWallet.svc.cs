@@ -37,5 +37,31 @@ namespace PCIWallet
             }
             return lstWallet;
         }
+        public List<PaymentHistory> PaymentHistory(String AccountId)
+        {
+            List<PaymentHistory> lstPAyments = null;
+            try
+            {
+                dbPCITokenEntities1 context = new dbPCITokenEntities1();
+                var payment = context.PymtHistory(AccountId);
+                var payments = from p in payment
+                               select new PaymentHistory
+                               {
+                                   Accountid = p.Accountid,
+                                   PaymentAmount = p.PaymentAmount.ToString(),
+                                   PaymentDate = p.PaymentDate,
+                                   isVoid = p.Void,
+                                   isReversal = p.Reversal,
+                                   TransactionStatus = p.TransactionStatus,
+                                   TransactionNumber = p.TransactionNumber 
+                               };
+                lstPAyments = new List<PCIWallet.PaymentHistory>(payments.ToList());
+            }
+            catch (Exception)
+            {
+                lstPAyments = null;
+            }
+            return lstPAyments;
+        }
     }
 }

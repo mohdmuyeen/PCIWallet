@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -73,7 +74,13 @@
       <DependentUpon>CustomerWallet.svc</DependentUpon>
     </Compile>
     <Compile Include="ICustomerWallet.cs" />
+    <Compile Include="PAYMENTHISTORY_Result.cs">
+      <DependentUpon>WalletModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PymtHistory_Result.cs">
+      <DependentUpon>WalletModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="tPaymentTransaction.cs">
       <DependentUpon>WalletModel.tt</DependentUpon>
     </Compile>
