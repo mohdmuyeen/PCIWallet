@@ -96,5 +96,31 @@ namespace PCIWallet
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("VOIDPAYMENT", pACCOUNTIDParameter, pTRANSACTIONNUMBERParameter);
         }
+    
+        public virtual int ReversePayment(string pACCOUNTID, string pTRANSACTIONNUMBER)
+        {
+            var pACCOUNTIDParameter = pACCOUNTID != null ?
+                new ObjectParameter("PACCOUNTID", pACCOUNTID) :
+                new ObjectParameter("PACCOUNTID", typeof(string));
+    
+            var pTRANSACTIONNUMBERParameter = pTRANSACTIONNUMBER != null ?
+                new ObjectParameter("PTRANSACTIONNUMBER", pTRANSACTIONNUMBER) :
+                new ObjectParameter("PTRANSACTIONNUMBER", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ReversePayment", pACCOUNTIDParameter, pTRANSACTIONNUMBERParameter);
+        }
+    
+        public virtual int StopPayment(string pACCOUNTID, string pTRANSACTIONNUMBER)
+        {
+            var pACCOUNTIDParameter = pACCOUNTID != null ?
+                new ObjectParameter("PACCOUNTID", pACCOUNTID) :
+                new ObjectParameter("PACCOUNTID", typeof(string));
+    
+            var pTRANSACTIONNUMBERParameter = pTRANSACTIONNUMBER != null ?
+                new ObjectParameter("PTRANSACTIONNUMBER", pTRANSACTIONNUMBER) :
+                new ObjectParameter("PTRANSACTIONNUMBER", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StopPayment", pACCOUNTIDParameter, pTRANSACTIONNUMBERParameter);
+        }
     }
 }

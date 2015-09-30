@@ -17,6 +17,17 @@ namespace PCIWallet
         [OperationContract]
         List<PaymentHistory> PaymentHistory(String AccountId);
 
+        [OperationContract]
+        String VoidPayment(String AccountId, String TransactionNumber);
+
+        [OperationContract]
+        String ReversePayment(String AccountId, String TransactionNumber);
+
+        [OperationContract]
+        String MakePayment(Payment objPayment);
+
+
+
     }
     [DataContract]
     public class WalletInfo
@@ -56,12 +67,12 @@ namespace PCIWallet
         [DataMember]
         public String Accountid { get; set; }
         [DataMember]
-        public String PaymentDate { get; set; }
-        [DataMember]
         public String PaymentAmount { get; set; }
         [DataMember]
-        public String TransactionNumber { get; set; }
+        public String CreditCard { get; set; }
         [DataMember]
-        public String TokenID { get; set; }
+        public String BankAccountNumber { get; set; }
+        [DataMember]
+        public String RoutingNumber { get; set; }
     }
 }

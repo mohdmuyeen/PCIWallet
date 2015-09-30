@@ -53,7 +53,7 @@ namespace PCIWallet
                                    isVoid = p.Void,
                                    isReversal = p.Reversal,
                                    TransactionStatus = p.TransactionStatus,
-                                   TransactionNumber = p.TransactionNumber 
+                                   TransactionNumber = p.TransactionNumber
                                };
                 lstPAyments = new List<PCIWallet.PaymentHistory>(payments.ToList());
             }
@@ -62,6 +62,66 @@ namespace PCIWallet
                 lstPAyments = null;
             }
             return lstPAyments;
+        }
+
+        public string VoidPayment(string AccountId, string TransactionNumber)
+        {
+            string ReturnValue = string.Empty;
+            try
+            {
+                dbPCITokenEntities1 context = new dbPCITokenEntities1();
+                int val = context.StopPayment(AccountId, TransactionNumber);
+                if (val > 0)
+                    ReturnValue = "OK";
+                else
+                    ReturnValue = "Error";
+
+            }
+            catch (Exception)
+            {
+                ReturnValue = "Error";
+            }
+            return ReturnValue;
+        }
+
+        public string ReversePayment(string AccountId, string TransactionNumber)
+        {
+            string ReturnValue = string.Empty;
+            try
+            {
+                dbPCITokenEntities1 context = new dbPCITokenEntities1();
+                int val = context.ReversePayment(AccountId, TransactionNumber);
+                if (val > 0)
+                    ReturnValue = "OK";
+                else
+                    ReturnValue = "Error";
+
+            }
+            catch (Exception)
+            {
+                ReturnValue = "Error";
+            }
+            return ReturnValue;
+        }
+
+        public string MakePayment(Payment objPayment)
+        {
+            string ReturnValue = string.Empty;
+            try
+            {
+                dbPCITokenEntities1 context = new dbPCITokenEntities1();
+                int val = context.insertpayment(objPayment.Accountid, Convert.ToDecimal(objPayment.PaymentAmount), objPayment.BankAccountNumber, objPayment.RoutingNumber, objPayment.CreditCard);
+                if (val > 0)
+                    ReturnValue = "OK";
+                else
+                    ReturnValue = "Error";
+
+            }
+            catch (Exception)
+            {
+                ReturnValue = "Error";
+            }
+            return ReturnValue;
         }
     }
 }

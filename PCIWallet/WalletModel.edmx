@@ -52,6 +52,14 @@
         <Function Name="PymtHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="PACCOUNTID" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="ReversePayment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PACCOUNTID" Type="varchar" Mode="In" />
+          <Parameter Name="PTRANSACTIONNUMBER" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="StopPayment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PACCOUNTID" Type="varchar" Mode="In" />
+          <Parameter Name="PTRANSACTIONNUMBER" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="uspGetWallet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="pAccountId" Type="varchar" Mode="In" />
         </Function>
@@ -89,6 +97,14 @@
           <Parameter Name="PACCOUNTID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="VOIDPAYMENT">
+            <Parameter Name="PACCOUNTID" Mode="In" Type="String" />
+            <Parameter Name="PTRANSACTIONNUMBER" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ReversePayment">
+            <Parameter Name="PACCOUNTID" Mode="In" Type="String" />
+            <Parameter Name="PTRANSACTIONNUMBER" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="StopPayment">
             <Parameter Name="PACCOUNTID" Mode="In" Type="String" />
             <Parameter Name="PTRANSACTIONNUMBER" Mode="In" Type="String" />
           </FunctionImport>
@@ -232,6 +248,8 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="VOIDPAYMENT" FunctionName="dbPCITokenModel.Store.VOIDPAYMENT" />
+          <FunctionImportMapping FunctionImportName="ReversePayment" FunctionName="dbPCITokenModel.Store.ReversePayment" />
+          <FunctionImportMapping FunctionImportName="StopPayment" FunctionName="dbPCITokenModel.Store.StopPayment" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
