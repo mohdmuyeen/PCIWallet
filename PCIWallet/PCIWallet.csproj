@@ -66,6 +66,10 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.xml" />
+    <Content Include="bin\PCIWallet.dll" />
+    <Content Include="bin\PCIWallet.pdb" />
     <Content Include="CustomerWallet.svc" />
     <Content Include="DataModel.tt">
       <DependentUpon>DataModel.edmx</DependentUpon>
@@ -150,6 +154,7 @@
     <Content Include="DataModelSVC.edmx.diagram">
       <DependentUpon>DataModelSVC.edmx</DependentUpon>
     </Content>
+    <Content Include="bin\PCIWallet.dll.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
