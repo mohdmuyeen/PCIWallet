@@ -159,12 +159,12 @@ namespace PaymentsPCI
                 String strRetun = objBus.MakePayment(objPayment);
                 if (strRetun.ToUpper() == "OK")
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "javascript:javascript:alert('Payment Processed Successfully '' );", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "javascript:javascript:alert('Payment Processed Successfully ' );", true);
                     PaymentHistory();
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "javascript:javascript:alert('Payment Failed, Plesae try after sometime! '' );", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "javascript:javascript:alert('Payment Failed, Plesae try after sometime! ' );", true);
                 }
 
             }

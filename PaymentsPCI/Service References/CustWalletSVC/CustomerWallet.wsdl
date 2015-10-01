@@ -13,92 +13,16 @@
   <wsdl:message name="ICustomerWallet_RetrieveWallet_OutputMessage">
     <wsdl:part name="parameters" element="tns:RetrieveWalletResponse" />
   </wsdl:message>
-  <wsdl:message name="ICustomerWallet_PaymentHistory_InputMessage">
-    <wsdl:part name="parameters" element="tns:PaymentHistory" />
-  </wsdl:message>
-  <wsdl:message name="ICustomerWallet_PaymentHistory_OutputMessage">
-    <wsdl:part name="parameters" element="tns:PaymentHistoryResponse" />
-  </wsdl:message>
-  <wsdl:message name="ICustomerWallet_VoidPayment_InputMessage">
-    <wsdl:part name="parameters" element="tns:VoidPayment" />
-  </wsdl:message>
-  <wsdl:message name="ICustomerWallet_VoidPayment_OutputMessage">
-    <wsdl:part name="parameters" element="tns:VoidPaymentResponse" />
-  </wsdl:message>
-  <wsdl:message name="ICustomerWallet_ReversePayment_InputMessage">
-    <wsdl:part name="parameters" element="tns:ReversePayment" />
-  </wsdl:message>
-  <wsdl:message name="ICustomerWallet_ReversePayment_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ReversePaymentResponse" />
-  </wsdl:message>
-  <wsdl:message name="ICustomerWallet_MakePayment_InputMessage">
-    <wsdl:part name="parameters" element="tns:MakePayment" />
-  </wsdl:message>
-  <wsdl:message name="ICustomerWallet_MakePayment_OutputMessage">
-    <wsdl:part name="parameters" element="tns:MakePaymentResponse" />
-  </wsdl:message>
   <wsdl:portType name="ICustomerWallet">
     <wsdl:operation name="RetrieveWallet">
       <wsdl:input wsaw:Action="http://tempuri.org/ICustomerWallet/RetrieveWallet" message="tns:ICustomerWallet_RetrieveWallet_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICustomerWallet/RetrieveWalletResponse" message="tns:ICustomerWallet_RetrieveWallet_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="PaymentHistory">
-      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerWallet/PaymentHistory" message="tns:ICustomerWallet_PaymentHistory_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerWallet/PaymentHistoryResponse" message="tns:ICustomerWallet_PaymentHistory_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="VoidPayment">
-      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerWallet/VoidPayment" message="tns:ICustomerWallet_VoidPayment_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerWallet/VoidPaymentResponse" message="tns:ICustomerWallet_VoidPayment_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ReversePayment">
-      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerWallet/ReversePayment" message="tns:ICustomerWallet_ReversePayment_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerWallet/ReversePaymentResponse" message="tns:ICustomerWallet_ReversePayment_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="MakePayment">
-      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerWallet/MakePayment" message="tns:ICustomerWallet_MakePayment_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerWallet/MakePaymentResponse" message="tns:ICustomerWallet_MakePayment_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ICustomerWallet" type="tns:ICustomerWallet">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="RetrieveWallet">
       <soap:operation soapAction="http://tempuri.org/ICustomerWallet/RetrieveWallet" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="PaymentHistory">
-      <soap:operation soapAction="http://tempuri.org/ICustomerWallet/PaymentHistory" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="VoidPayment">
-      <soap:operation soapAction="http://tempuri.org/ICustomerWallet/VoidPayment" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ReversePayment">
-      <soap:operation soapAction="http://tempuri.org/ICustomerWallet/ReversePayment" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="MakePayment">
-      <soap:operation soapAction="http://tempuri.org/ICustomerWallet/MakePayment" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
