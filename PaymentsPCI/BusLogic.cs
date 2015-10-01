@@ -12,6 +12,7 @@ namespace PaymentsPCI
             List<PaymentHistory> lstPAyments = null;
             try
             {
+
                 PCITokenDataModel context = new PCITokenDataModel();
                 var payment = context.PymtHistory(AccountId);
                 var payments = from p in payment
