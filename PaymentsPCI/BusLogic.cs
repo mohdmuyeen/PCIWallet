@@ -27,7 +27,6 @@ namespace PaymentsPCI
                                };
                 lstPAyments = new List<PaymentHistory>(payments.ToList());
             }
-
             catch (Exception)
             {
                 lstPAyments = null;

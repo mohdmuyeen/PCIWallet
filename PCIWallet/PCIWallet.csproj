@@ -155,6 +155,7 @@
       <DependentUpon>DataModelSVC.edmx</DependentUpon>
     </Content>
     <Content Include="bin\PCIWallet.dll.config" />
+    <Content Include="ajax\AjaxControlToolkit.Binary.NET45.zip" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
